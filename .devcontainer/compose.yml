@@ -1,0 +1,12 @@
+services:
+  dev:
+    image: mcr.microsoft.com/devcontainers/base:1-bookworm
+    command: sleep infinity
+    volumes:
+      - ../..:/workspaces:cached
+  aws:
+    image: motoserver/moto:5.0.12
+    restart: unless-stopped
+    environment:
+      MOTO_PORT: "4566"
+    network_mode: service:dev

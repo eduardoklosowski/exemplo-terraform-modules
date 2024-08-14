@@ -1,0 +1,27 @@
+{
+  "name": "exemplo-terraform-modules",
+
+  "dockerComposeFile": "compose.yml",
+  "service": "dev",
+  "features": {
+    "ghcr.io/devcontainers/features/terraform:1": {"version": "1.9.3"},
+    "ghcr.io/devcontainers-contrib/features/pipx-package:1": {"package": "awscli-local[ver1]", "version": "0.22.0"}
+  },
+
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "forwardPorts": [4566],
+  "portsAttributes": {
+    "4566": {"label": "Moto", "onAutoForward": "silent"}
+  },
+
+  "postCreateCommand": "terraform -install-autocomplete",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "hashicorp.terraform"
+      ]
+    }
+  }
+}
